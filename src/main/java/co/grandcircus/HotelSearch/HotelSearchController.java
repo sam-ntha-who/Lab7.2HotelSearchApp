@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,9 +28,9 @@ public class HotelSearchController {
 	}
  	
 	@PostMapping("result")
-	public String displayResult(Model model, @RequestParam String city) {
+	public String displayResult(Model model, @RequestParam String city, Sort sort) {
 		model.addAttribute("city", city);
-		List<Hotel> hotels = repo.findByCity(city);
+		List<Hotel> hotels = repo.findByCity(city, Sort.by("pricePerNight"));
 		model.addAttribute("hotels", hotels);
 	
 		
