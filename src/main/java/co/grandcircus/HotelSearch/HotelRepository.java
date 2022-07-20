@@ -8,7 +8,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface HotelRepository extends MongoRepository<Hotel, String> {
 
 	List<Hotel> findAll();
-	Optional<Hotel> findByCity(String city);
+	List<Hotel> findByCity(String city);
+
 	Optional<Hotel> findByHotelName(String name);
 	Optional<Hotel> findByPricePerNight(int pricePerNight);
 }
